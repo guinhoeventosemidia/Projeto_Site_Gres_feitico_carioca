@@ -22,9 +22,10 @@
   <header class="navbar">
     <div class="logo">
       <img src="assets/images/logo.jpg" alt="Logo Feitiço Carioca" class="logo-img">
-      Feitiço Carioca
+      <span class="logo-text">Feitiço Carioca</span>
     </div>
-    <nav>
+    <button class="menu-toggle" aria-label="Abrir menu" onclick="toggleMobileMenu()">☰</button>
+    <nav class="nav">
       <ul>
         <li><a href="#hero">Início</a></li>
         <li><a href="#historia">História</a></li>
@@ -37,54 +38,69 @@
 
   <!-- HERO PRINCIPAL -->
   <section class="hero" id="hero">
+    <div class="hero-bg parallax" data-speed="0.3" style="background-image:url('assets/images/hero-bg.jpg');"></div>
     <div class="overlay"></div>
     <div class="hero-content">
       <h1>G.R.E.S. Feitiço Carioca</h1>
       <p>Da comunidade de Santo Cristo para o coração do Rio — uma escola feita de samba, amor e união.</p>
       <a href="#historia" class="btn">Conheça Nossa História</a>
-      <div class="scroll-indicator">↓</div>
+      <div class="scroll-indicator" aria-hidden="true">↓</div>
     </div>
   </section>
 
-
+  <!-- HISTÓRIA -->
+  <section id="historia" class="section fade-section">
+    <div class="container">
+      <h2>História</h2>
+      <p>
+        Fundada em 23 de fevereiro de 2016, a Feitiço Carioca nasceu para celebrar a cultura popular do Rio de Janeiro.
+        A escola já participou de diversos carnavais na Intendente Magalhães apresentando enredos que misturam tradição,
+        criatividade e resistência cultural.
+      </p>
+    </div>
+  </section>
 
   <!-- DESFILES -->
   <section id="desfiles" class="section fade-section">
-    <h2>Desfiles e Eventos</h2>
-    <p>Confira os grandes momentos do Feitiço Carioca nas avenidas do samba.</p>
-    <div class="cards">
-      <div class="card">
-        <h3>Desfile 2024</h3>
-        <p>Brilho, emoção e tradição em cada passo.</p>
-      </div>
-      <div class="card dark">
-        <h3>Feijoada do Feitiço</h3>
-        <p>Samba, alegria e sabor para reunir nossa comunidade.</p>
-      </div>
-      <div class="card">
-        <h3>Ensaio de Rua</h3>
-        <p>O batuque que contagia e mantém viva a chama do carnaval.</p>
+    <div class="container">
+      <h2>Desfiles e Eventos</h2>
+      <p>Confira os grandes momentos do Feitiço Carioca nas avenidas do samba.</p>
+      <div class="cards">
+        <article class="card">
+          <h3>Desfile 2024</h3>
+          <p>Brilho, emoção e tradição em cada passo.</p>
+        </article>
+        <article class="card dark">
+          <h3>Feijoada do Feitiço</h3>
+          <p>Samba, alegria e sabor para reunir nossa comunidade.</p>
+        </article>
+        <article class="card">
+          <h3>Ensaio de Rua</h3>
+          <p>O batuque que contagia e mantém viva a chama do carnaval.</p>
+        </article>
       </div>
     </div>
   </section>
 
-    <!-- GALERIA -->
-  <section id="galeria" class="galeria fade-section">
-    <h2>Galeria</h2>
-    <div class="carousel">
-      <button class="carousel-btn prev">❮</button>
-      <div class="carousel-track">
-        <img src="assets/images/foto1.jpg" alt="Imagem 1 do Feitiço Carioca">
-        <img src="assets/images/foto2.jpg" alt="Imagem 2 do Feitiço Carioca">
-        <img src="assets/images/foto3.jpg" alt="Imagem 3 do Feitiço Carioca">
-        <img src="assets/images/foto4.png" alt="Imagem 4 do Feitiço Carioca">
+  <!-- GALERIA -->
+  <section id="galeria" class="galeria section fade-section">
+    <div class="container">
+      <h2>Galeria</h2>
+      <div class="carousel">
+        <button class="carousel-btn prev" aria-label="Anterior">❮</button>
+        <div class="carousel-track">
+          <img src="assets/images/foto1.jpg" alt="Foto 1">
+          <img src="assets/images/foto2.jpg" alt="Foto 2">
+          <img src="assets/images/foto3.jpg" alt="Foto 3">
+        </div>
+        <button class="carousel-btn next" aria-label="Próximo">❯</button>
       </div>
-      <button class="carousel-btn next">❯</button>
     </div>
   </section>
 
-    <!-- HERO HISTÓRIA -->
-  <section class="hero hero-historia" id="historia">
+  <!-- HERO HISTÓRIA / SECOND PARALLAX -->
+  <section class="hero hero-historia">
+    <div class="hero-bg parallax" data-speed="0.2" style="background-image:url('assets/images/historia-bg-placeholder.jpg');"></div>
     <div class="overlay"></div>
     <div class="hero-content">
       <h1>História e Tradição</h1>
@@ -92,23 +108,32 @@
     </div>
   </section>
 
-
-
   <!-- CONTATO -->
   <section id="contato" class="section fade-section">
-    <h2>Contato</h2>
-    <form class="form-contato">
-      <input type="text" placeholder="Seu nome" required>
-      <input type="email" placeholder="Seu e-mail" required>
-      <textarea rows="4" placeholder="Sua mensagem"></textarea>
-      <button class="btn">Enviar</button>
-    </form>
+    <div class="container">
+      <h2>Contato</h2>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <p><strong>Email:</strong> <a href="mailto:gresfeiticodorio@gmail.com">gresfeiticodorio@gmail.com</a></p>
+          <p><strong>Endereço:</strong> Méier - Rio de Janeiro, RJ</p>
+          <p><strong>Redes:</strong> Instagram / Facebook</p>
+        </div>
+        <form class="form-contato" action="https://formsubmit.co/gresfeiticodorio@gmail.com" method="POST">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_template" value="box">
+          <input type="text" name="name" placeholder="Seu nome" required>
+          <input type="email" name="email" placeholder="Seu e-mail" required>
+          <textarea name="message" rows="5" placeholder="Sua mensagem" required></textarea>
+          <button class="btn" type="submit">Enviar</button>
+        </form>
+      </div>
+    </div>
   </section>
 
   <footer>
-    <p>© 2025 G.R.E.S. Feitiço Carioca — Todos os direitos reservados.</p>
+    <div class="container">
+      <p>© 2025 G.R.E.S. Feitiço Carioca — Todos os direitos reservados.</p>
+    </div>
   </footer>
 </body>
 </html>
-
-
