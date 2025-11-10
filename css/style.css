@@ -199,11 +199,11 @@ section.module.parallax:after{
 
 
 section.module.parallax-1{
-  background-image: url("http://www.apoteose.com/wp-content/uploads/Feitico-do-Rio.jpg");
+  background-image: url("../assets/images/FRantigo.jpg");
 }
 
 section.module.parallax-2{
-  background-image: url("https://andersonlopesoficial.com.br/wp-content/uploads/2023/03/Pavilhao-Feitico-Carioca-1140x815.jpeg");
+  background-image: url("../assets/images/PavilhaoFC.jpeg");
 }
 
 section.module.parallax-3{
