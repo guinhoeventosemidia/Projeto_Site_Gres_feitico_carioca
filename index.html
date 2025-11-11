@@ -18,16 +18,26 @@
   <!-- JS -->
   <script defer src="js/script.js"></script>
 </head>
+
 <body>
+  <!-- ======= NAVBAR ======= -->
   <header class="navbar">
     <div class="logo">
       <img src="assets/images/logo.jpg" alt="Logo Feitiço Carioca" class="logo-img">
       Feitiço Carioca
     </div>
+
+    <!-- Botão do menu mobile -->
+    <div class="menu-toggle" id="menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
     <nav>
-      <ul>
+      <ul id="menu">
         <li><a href="#hero">Início</a></li>
-        <li><a href="#historia">História</a></li>
+        <li><a href="Historia.html">História</a></li>
         <li><a href="#desfiles">Desfiles</a></li>
         <li><a href="#galeria">Galeria</a></li>
         <li><a href="#contato">Contato</a></li>
@@ -35,86 +45,96 @@
     </nav>
   </header>
 
-  <!-- HERO PRINCIPAL -->
- 
-  <section class="hero" id="hero">
+  <!-- ======= HERO PRINCIPAL ======= -->
+  <section class="hero parallax" id="hero" style="background-image:url('assets/images/comissao_24.jpg')">
     <div class="overlay"></div>
     <div class="hero-content">
       <h1>G.R.E.S. Feitiço Carioca</h1>
       <p>Da comunidade de Santo Cristo para o coração do Rio — uma escola feita de samba, amor e união.</p>
-      
-      <h2>Fique a vontade para conhecer a nossa escola. </h2>
       <h2>Nós vamos enfeitiçar você!</h2>
       <div class="scroll-indicator">↓↓↓</div>
     </div>
   </section>
 
+  <!-- ======= PARALLAX HISTÓRIA ======= -->
+  <section class="module parallax parallax-1" id="historia">
+    <h1>Nossa história</h1>
+    
+      
+  </section>
 
-
-  <!-- DESFILES -->
+  <!-- ======= SEÇÃO DESFILES ======= -->
   <section id="desfiles" class="section fade-section">
     <h2>Desfiles e Eventos</h2>
     <p>Confira os grandes momentos do Feitiço Carioca nas avenidas do samba.</p>
     <div class="cards">
       <div class="card">
-        <h3>Desfile 2024</h3>
-        <p>Brilho, emoção e tradição em cada passo.</p>
+        <h3>Griot - Memórias da Carne</h3>
+        <p>O enredo rendeu a 4ª colocação da noite e a 9ª posiçao na classificação geral.</p>
       </div>
       <div class="card dark">
         <h3>Feijoada do Feitiço</h3>
-        <p>Samba, alegria e sabor para reunir nossa comunidade.</p>
+        <p>Samba, alegria e sabor para reunir nossa comunidade. Nossas feijoadas sempre são muito aguardadas</p>
       </div>
       <div class="card">
         <h3>Ensaio de Rua</h3>
         <p>O batuque que contagia e mantém viva a chama do carnaval.</p>
+        <p>Nossos ensaios são feitos no nosso barracaõ no santo Cristo</p>
       </div>
     </div>
   </section>
 
-    <!-- GALERIA -->
-  <section id="galeria" class="galeria fade-section">
+  <!-- ======= PARALLAX DESFILES ======= -->
+  <section class="module parallax parallax-2">
+    <h1>Nossa Gente</h1>
+  </section>
+
+  <!-- ======= GALERIA ======= -->
+  <section id="galeria" class="fade-section">
     <h2 style="text-align: center;">Galeria</h2>
     <div class="carousel">
       <button class="carousel-btn prev">❮</button>
       <div class="carousel-track">
-        <img src="assets/images/foto1.jpg" alt="Imagem 1 do Feitiço Carioca">
-        <img src="assets/images/foto2.jpg" alt="Imagem 2 do Feitiço Carioca">
-        <img src="assets/images/foto3.jpg" alt="Imagem 3 do Feitiço Carioca">
-        <img src="assets/images/foto4.png" alt="Imagem 4 do Feitiço Carioca">
+        <img src="assets/images/foto1.jpg" alt="">
+        <img src="assets/images/foto2.jpg" alt="">
+        <img src="assets/images/foto3.jpg" alt="">
+        <img src="assets/images/foto4.png" alt="">
+        <img src="assets/images/logo_carnaval_2026.png" alt="">
+        <img src="assets/images/hero-bg.jpg" alt="">
       </div>
       <button class="carousel-btn next">❯</button>
     </div>
   </section>
 
-    <!-- HERO HISTÓRIA -->
-  <section class="hero hero-historia" id="historia">
-    <div class="overlay"></div>
-    <div class="hero-content">
-      <h1>História e Tradição</h1>
-      <p>
-        <a href="Historia.html" class="btn">Saiba mais aqui</a>
-
-      </p>
-    </div>
+  <!-- ======= PARALLAX GALERIA ======= -->
+  <section class="module parallax parallax-3">
+    <h1>Venha fazer parte do Nossos desfiles</h1>
+    
   </section>
 
+<!-- ======= CONTATO ======= -->
+<section id="contato" class="section fade-section">
+  <h2>Contato</h2>
+  <form action="https://formsubmit.co/gresfeiticodorio@gmail.com" method="POST" class="form-contato">
+    <input type="text" name="name" placeholder="Seu nome" required>
+    <input type="email" name="email" placeholder="Seu e-mail" required>
+    <textarea name="message" rows="4" placeholder="Sua mensagem" required></textarea>
+    <button class="btn" type="submit">Enviar</button>
 
+    <!-- configurações ocultas -->
+    <input type="hidden" name="_next" value="https://feiticocarioca.com.br">
+    <input type="hidden" name="_captcha" value="false">
+  </form>
+</section>
 
-  <!-- CONTATO -->
-  <section id="contato" class="section fade-section">
-    <h2>Contato</h2>
-    <form class="form-contato">
-      <input type="text" placeholder="Seu nome" required>
-      <input type="email" placeholder="Seu e-mail" required>
-      <textarea rows="4" placeholder="Sua mensagem"></textarea>
-      <button class="btn">Enviar</button>
-    </form>
+  <!-- ======= PARALLAX FINAL ======= -->
+  <section class="module parallax parallax-4">
+    <h1>Venha Fazer parte dessa Família!</h1>
   </section>
 
+  <!-- ======= FOOTER ======= -->
   <footer>
     <p>© 2025 G.R.E.S. Feitiço Carioca — Todos os direitos reservados.</p>
   </footer>
 </body>
 </html>
-
-
