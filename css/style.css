@@ -426,3 +426,48 @@ section.module.parallax h1 {
   margin: 0 auto;
   padding: 0 20px;
 }
+
+/* ===== COMPATIBILIDADE CROSS-BROWSER ===== */
+
+/* Suporte extra para backdrop-filter (Safari) */
+header.navbar, .card {
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+
+/* Correção para background-attachment no iOS (Safari mobile não suporta 'fixed') */
+@supports (-webkit-overflow-scrolling: touch) {
+  section.module.parallax {
+    background-attachment: scroll;
+  }
+}
+
+/* Garantia de transições e transformações */
+*, *::before, *::after {
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  -webkit-transform: translateZ(0);
+}
+
+/* Prefixos flexbox (para versões antigas) */
+.navbar, .cards, .carousel-track, .form-contato {
+  display: -webkit-flex;
+  display: flex;
+}
+
+/* Scroll suave em Safari */
+html {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Font smoothing para texto mais nítido em macOS */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Melhor ajuste visual para imagens no Safari */
+img {
+  image-rendering: -webkit-optimize-contrast;
+}
