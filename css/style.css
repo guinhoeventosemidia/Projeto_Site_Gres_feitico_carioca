@@ -73,19 +73,67 @@ header.navbar {
   object-fit: cover;
 }
 
-.navbar ul {
-  list-style: none;
-  display: flex;
-  gap: 1.5rem;
-  transition: transform 0.4s ease, opacity 0.4s ease;
-}
+  /* menu principal (desktop) */
+  nav {
+    position: relative;
+    z-index: 60;
+  }
 
-.navbar a {
-  color: var(--branco);
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.3s;
-}
+.navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+    align-items: center;
+    z-index: 60;
+  }
+
+  .navbar a {
+    color: var(--branco);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+  }
+
+  .navbar a:hover,
+  .navbar a:focus {
+    color: var(--dourado);
+    outline: none;
+  }
+
+  /* botão menu mobile (hambúrguer) */
+  .menu-toggle {
+    display: none; /* ativado no @media */
+    flex-direction: column;
+    justify-content: space-between;
+    width: 28px;
+    height: 20px;
+    cursor: pointer;
+    z-index: 220; /* garantir acima de tudo */
+    background: transparent;
+    border: none;
+    padding: 0;
+  }
+
+  .menu-toggle span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background: var(--branco);
+    border-radius: 2px;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+  }
+
+  /* animação do ícone ao abrir */
+  .menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translateY(8px);
+  }
+  .menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+  }
+  .menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translateY(-8px);
+  }
 
 .navbar a:hover {
   color: var(--dourado);
