@@ -56,6 +56,8 @@ header.navbar {
   z-index: 100;
 }
 
+/* garantir que o header seja referência para elementos internos */
+  header.navbar { position: relative; }
 .logo {
   font-weight: 600;
   font-size: 1.2rem;
