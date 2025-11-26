@@ -1,4 +1,6 @@
-/* ===== VARIÁVEIS DE COR ===== */
+/* ============================================================
+   VARIÁVEIS DE COR
+============================================================ */
 :root {
   --roxo: #6b1fbf;
   --dourado: #f8c537;
@@ -7,7 +9,9 @@
   --cinza-escuro: #111111;
 }
 
-/* ===== RESET BÁSICO ===== */
+/* ============================================================
+   RESET GLOBAL — (CORRIGIDO!)
+============================================================ */
 * {
   margin: 0;
   padding: 0;
@@ -21,9 +25,24 @@ body {
   scroll-behavior: smooth;
   overflow-x: hidden;
   word-wrap: break-word;
+  line-height: 1.6;
 }
 
-/* ===== NAVBAR ===== */
+/* ============================================================
+   ESPAÇAMENTO DE TEXTOS
+============================================================ */
+p {
+  margin: 16px 0;
+}
+
+h1, h2, h3, h4, h5 {
+  margin: 24px 0 12px;
+  line-height: 1.3;
+}
+
+/* ============================================================
+   NAVBAR
+============================================================ */
 header.navbar {
   display: flex;
   justify-content: space-between;
@@ -56,6 +75,7 @@ header.navbar {
   list-style: none;
   display: flex;
   gap: 1.5rem;
+  transition: transform 0.4s ease, opacity 0.4s ease;
 }
 
 .navbar a {
@@ -69,7 +89,9 @@ header.navbar {
   color: var(--dourado);
 }
 
-/* ===== HERO PRINCIPAL ===== */
+/* ============================================================
+   HERO
+============================================================ */
 .hero {
   display: flex;
   flex-direction: column;
@@ -124,6 +146,10 @@ header.navbar {
   transform: scale(1.05);
 }
 
+.btn:focus {
+  outline: 2px solid var(--dourado);
+}
+
 .scroll-indicator {
   margin-top: 2rem;
   font-size: 1.5rem;
@@ -131,7 +157,9 @@ header.navbar {
   color: var(--dourado);
 }
 
-/* ===== SEÇÕES GERAIS ===== */
+/* ============================================================
+   SEÇÕES PADRÃO
+============================================================ */
 .section {
   padding: 6rem 2rem;
   text-align: center;
@@ -142,6 +170,9 @@ h2 {
   margin-bottom: 1rem;
 }
 
+/* ============================================================
+   CARDS
+============================================================ */
 .cards {
   display: flex;
   flex-wrap: wrap;
@@ -152,7 +183,7 @@ h2 {
 
 .card {
   background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(6px);
   border-radius: 1rem;
   padding: 2rem;
   width: 280px;
@@ -169,7 +200,9 @@ h2 {
   background: rgba(0, 0, 0, 0.9);
 }
 
-/* ===== CARROSSEL ===== */
+/* ============================================================
+   CARROSSEL
+============================================================ */
 .carousel {
   position: relative;
   overflow: hidden;
@@ -215,7 +248,9 @@ h2 {
   background: rgba(0, 0, 0, 0.7);
 }
 
-/* ===== FORMULÁRIO ===== */
+/* ============================================================
+   FORMULÁRIO
+============================================================ */
 .form-contato {
   display: flex;
   flex-direction: column;
@@ -239,7 +274,9 @@ h2 {
   cursor: pointer;
 }
 
-/* ===== FOOTER ===== */
+/* ============================================================
+   FOOTER
+============================================================ */
 footer {
   background: #000;
   color: var(--dourado);
@@ -247,7 +284,9 @@ footer {
   padding: 1.5rem;
 }
 
-/* ===== PARALLAX ===== */
+/* ============================================================
+   PARALLAX
+============================================================ */
 section.module.parallax {
   display: flex;
   flex-direction: column;
@@ -270,7 +309,12 @@ section.module.parallax:after {
   z-index: 8;
   top: 0;
   left: 0;
-  background: linear-gradient(to bottom, rgba(0,0,0,0) 0, rgba(0,0,0,0) 40%, #000 100%);
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0) 0,
+    rgba(0,0,0,0) 40%,
+    #000 100%
+  );
 }
 
 section.module.parallax h1 {
@@ -281,36 +325,19 @@ section.module.parallax h1 {
   text-transform: uppercase;
 }
 
-/* ===== PARALLAX ESPECÍFICOS ===== */
-.parallax-1 {
-  background-image: url("../assets/images/historia-bgs.png");
-}
+/* IMAGENS DO PARALLAX */
+.parallax-1 { background-image: url("../assets/images/tonybaianas.jpg"); }
+.parallax-2 { background-image: url("../assets/images/nossa\ gente_2.png"); }
+.parallax-3 { background-image: url("../assets/images/nosso_desfile.jpg"); }
+.parallax-4 { background-image: url("../assets/images/Feitiço_carioca_2026_F1.jpg"); }
+.parallax-5 { background-image: url("../assets/images/FRantigo.jpg"); }
+.parallax-6 { background-image: url("../assets/images/PavilhaoFC.jpeg"); }
+.parallax-7 { background-image: url("../assets/images/hero-bg.jpg"); }
+.parallax-8 { background-image: url("../assets/images/historia-bgs.png"); }
 
-.parallax-2 {
-  background-image: url("../assets/images/nossa\ gente_2.png");
-}
-
-.parallax-3 {
-  background-image: url("../assets/images/carnaval.png");
-}
-
-.parallax-4 {
-  background-image: url("../assets/images/Feitiço_carioca_2026_F1.jpg");
-}
-
-.parallax-5 {
-  background-image: url("../assets/images/FRantigo.jpg");
-}
-
-.parallax-6 {
-  background-image: url("../assets/images/PavilhaoFC.jpeg");
-}
-
-.parallax-7 {
-  background-image: url("../assets/images/hero-bg.jpg");
-}
-
-/* ===== ANIMAÇÕES ===== */
+/* ============================================================
+   ANIMAÇÕES
+============================================================ */
 @keyframes bounce {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(10px); }
@@ -333,8 +360,11 @@ section.module.parallax h1 {
   transform: translateY(0);
 }
 
-/* ===== RESPONSIVIDADE ===== */
+/* ============================================================
+   RESPONSIVIDADE
+============================================================ */
 @media (max-width: 768px) {
+
   .cards {
     flex-direction: column;
     align-items: center;
@@ -351,30 +381,7 @@ section.module.parallax h1 {
   section.module.parallax h1 {
     font-size: 36px;
   }
-}
 
-/* ===== MENU MOBILE ===== */
-.menu-toggle {
-  display: none;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 28px;
-  height: 20px;
-  cursor: pointer;
-  z-index: 110;
-}
-
-.menu-toggle span {
-  display: block;
-  height: 3px;
-  width: 100%;
-  background: var(--branco);
-  border-radius: 2px;
-  transition: 0.3s;
-}
-
-/* ===== NAVBAR RESPONSIVA ===== */
-@media (max-width: 768px) {
   header.navbar {
     flex-wrap: wrap;
     padding: 1rem;
@@ -400,7 +407,6 @@ section.module.parallax h1 {
     padding: 1.5rem 0;
     transform: translateY(-150%);
     opacity: 0;
-    transition: all 0.4s ease-in-out;
   }
 
   .navbar ul.show {
@@ -409,7 +415,29 @@ section.module.parallax h1 {
   }
 }
 
-/* ===== ANIMAÇÃO DO ÍCONE ABERTO ===== */
+/* ============================================================
+   MENU MOBILE HAMBÚRGUER
+============================================================ */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 28px;
+  height: 20px;
+  cursor: pointer;
+  z-index: 110;
+}
+
+.menu-toggle span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background: var(--branco);
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+/* ÍCONE ANIMADO */
 .menu-toggle.active span:nth-child(1) {
   transform: rotate(45deg) translateY(8px);
 }
@@ -420,9 +448,62 @@ section.module.parallax h1 {
   transform: rotate(-45deg) translateY(-8px);
 }
 
-.container{
+/* ============================================================
+   CONTAINER
+============================================================ */
+.container {
   width: 100%;
   max-width: 760px;
   margin: 0 auto;
   padding: 0 20px;
+}
+
+/* ============================================================
+   PÁGINA – ACONTECIMENTOS
+============================================================ */
+
+.post-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2.5rem;
+  margin-top: 3rem;
+}
+
+.post-card {
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(6px);
+  border-radius: 1rem;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  overflow: hidden;
+  transition: transform .3s, box-shadow .3s;
+}
+
+.post-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 6px 25px rgba(0,0,0,0.6);
+}
+
+.post-card img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+}
+
+.post-content {
+  padding: 1.5rem;
+}
+
+.post-date {
+  font-size: 0.85rem;
+  color: var(--dourado);
+  font-weight: 600;
+}
+
+.post-card h3 {
+  margin: 10px 0;
+  color: var(--branco);
+}
+
+.post-card p {
+  color: #dedede;
 }
