@@ -10,7 +10,7 @@
 }
 
 /* ============================================================
-   RESET GLOBAL — (CORRIGIDO!)
+   RESET GLOBAL
 ============================================================ */
 * {
   margin: 0;
@@ -189,7 +189,7 @@ h2 {
   width: 280px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
   transition: transform 0.3s, box-shadow 0.3s;
-  text-align: left; /* Adicionado para alinhar o conteúdo do card à esquerda */
+  text-align: left;
 }
 
 .card:hover {
@@ -220,7 +220,7 @@ h2 {
 .carousel img {
   width: 100%;
   height: 500px;
-  object-fit: contain; /* Ajuste final para manter a imagem inteira sem esticar */
+  object-fit: contain; 
   flex-shrink: 0;
 }
 
@@ -362,7 +362,7 @@ section.module.parallax h1 {
 }
 
 /* ============================================================
-   RESPONSIVIDADE
+   RESPONSIVIDADE (MOBILE)
 ============================================================ */
 @media (max-width: 768px) {
 
@@ -388,14 +388,16 @@ section.module.parallax h1 {
     padding: 1rem;
   }
 
+  /* REGRAS ESSENCIAIS PARA O MENU MOBILE: */
   .menu-toggle {
-    display: flex;
+    display: flex; /* Garante que o ícone hambúrguer apareça */
   }
 
   nav {
     width: 100%;
   }
 
+  /* ESCONDE o menu por padrão (fora da tela) */
   .navbar ul {
     flex-direction: column;
     align-items: center;
@@ -410,6 +412,7 @@ section.module.parallax h1 {
     opacity: 0;
   }
 
+  /* MOSTRA o menu quando o JS adiciona a classe 'show' */
   .navbar ul.show {
     transform: translateY(0);
     opacity: 1;
@@ -417,10 +420,10 @@ section.module.parallax h1 {
 }
 
 /* ============================================================
-   MENU MOBILE HAMBÚRGUER
+   MENU MOBILE HAMBÚRGUER (ÍCONE)
 ============================================================ */
 .menu-toggle {
-  display: none;
+  display: none; /* Escondido por padrão no desktop */
   flex-direction: column;
   justify-content: space-between;
   width: 28px;
@@ -438,7 +441,7 @@ section.module.parallax h1 {
   transition: 0.3s;
 }
 
-/* ÍCONE ANIMADO */
+/* ÍCONE ANIMADO (quando a classe 'active' é adicionada pelo JS) */
 .menu-toggle.active span:nth-child(1) {
   transform: rotate(45deg) translateY(8px);
 }
@@ -454,7 +457,7 @@ section.module.parallax h1 {
 ============================================================ */
 .container {
   width: 100%;
-  max-width: 1000px; /* CORRIGIDO para que 3 cards caibam lado a lado */
+  max-width: 1000px; /* CORRIGIDO: Permite 3 cards lado a lado */
   margin: 0 auto;
   padding: 0 20px;
 }
