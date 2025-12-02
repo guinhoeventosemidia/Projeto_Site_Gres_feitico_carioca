@@ -7,35 +7,30 @@
   <meta name="author" content="G.R.E.S. Feitiço Carioca" />
   <title>G.R.E.S. Feitiço Carioca</title>
 
-  <!-- CSS -->
   <link rel="stylesheet" href="css/style.css" />
 
-  <!-- Fonte -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
-  <!-- JS -->
   <script defer src="js/script.js"></script>
 </head>
 
 <body>
-  <!-- ======= NAVBAR ======= -->
-<header class="navbar">
+  <header class="navbar">
     <div class="logo">
       <img src="assets/images/logo.jpg" alt="Logo Feitiço Carioca" class="logo-img">
       Feitiço Carioca
     </div>
 
-    <!-- Botão do menu mobile -->
-    <div class="menu-toggle" id="menu-toggle">
+    <div class="menu-toggle" id="menu-toggle" aria-controls="menu" aria-expanded="false">
       <span></span>
       <span></span>
       <span></span>
     </div>
 
     <nav>
-      <ul id="menu">
+      <ul id="menu" role="menu">
       <li><a href="index.html">Início</a></li>
       <li><a href="Historia.html">História</a></li>
       <li><a href="index.html#desfiles">Desfiles</a></li>
@@ -43,13 +38,9 @@
       <li><a href="Acontecimentos.html">Últimas do Feitiço</a></li>
       <li><a href="index.html#contato">Contato</a></li>
     </ul>
-    
     </nav>
-
-  
   </header>
 
-  <!-- ======= HERO PRINCIPAL ======= -->
   <section class="hero parallax" id="hero" style="background-image:url('assets/images/comissao_24.jpg')">
     <div class="overlay"></div>
     <div class="hero-content">
@@ -60,14 +51,10 @@
     </div>
   </section>
 
-  <!-- ======= PARALLAX HISTÓRIA ======= -->
   <section class="module parallax parallax-1" id="historia">
     <h1>Nossa história</h1>
-    
-      
   </section>
 
-  <!-- ======= SEÇÃO DESFILES ======= -->
   <section id="desfiles" class="section fade-section">
     <h2>Desfiles e Eventos</h2>
     <p>Confira os grandes momentos do Feitiço Carioca nas avenidas do samba.</p>
@@ -87,57 +74,47 @@
     </div>
   </section>
 
-  <!-- ======= PARALLAX DESFILES ======= -->
   <section class="module parallax parallax-2">
     <h1>Nossa Gente</h1>
   </section>
 
-  <!-- ======= GALERIA ======= -->
-  <section id="galeria" class="fade-section">
+  <section id="galeria" class="section fade-section">
     <h2 style="text-align: center;">Galeria</h2>
     <div class="carousel">
-      <button class="carousel-btn prev">❮</button>
+      <button class="carousel-btn prev" aria-label="Anterior">❮</button>
       <div class="carousel-track">
-        <img src="assets/images/ultimas1.jpeg" alt="">
-        <img src="assets/images/expor_griot.jpeg" alt="">
-        <img src="assets/images/enredo_of.png" alt="https://www.youtube.com/watch?v=0CdMaezMQH0&list=RD0CdMaezMQH0&start_radio=1&t=1605s">
-        <img src="assets/images/desfilar.png" alt="">
-        <img src="assets/images/foto2.jpg" alt="">
-        <img src="assets/images/foto3.jpg" alt="">
-        
-        
+        <img src="assets/images/ultimas1.jpeg" alt="Imagem 1 da Galeria - Últimas Notícias">
+        <img src="assets/images/expor_griot.jpeg" alt="Imagem 2 da Galeria - Exposição do Enredo Griot">
+        <img src="assets/images/enredo_of.png" alt="Imagem 3 da Galeria - Logomarca do Enredo">
+        <img src="assets/images/desfilar.png" alt="Imagem 4 da Galeria - Desfile">
+        <img src="assets/images/foto2.jpg" alt="Imagem 5 da Galeria">
+        <img src="assets/images/foto3.jpg" alt="Imagem 6 da Galeria">
       </div>
-      <button class="carousel-btn next">❯</button>
+      <button class="carousel-btn next" aria-label="Próximo">❯</button>
     </div>
   </section>
 
-  <!-- ======= PARALLAX GALERIA ======= -->
   <section class="module parallax parallax-3">
     <h1>Venha fazer parte do Nosso desfile</h1>
-    
   </section>
 
-<!-- ======= CONTATO ======= -->
 <section id="contato" class="section fade-section">
   <h2>Contato</h2>
   <form action="https://formsubmit.co/gresfeiticodorio@gmail.com" method="POST" class="form-contato">
     <input type="text" name="name" placeholder="Seu nome" required>
     <input type="email" name="email" placeholder="Seu e-mail" required>
-    <textarea name="message" rows="4" placeholder="Sua mensagem" required></textarea>
-    <button class="btn" type="submit">Enviar</button>
+    <textarea name="message" rows="5" placeholder="Sua mensagem" required></textarea>
+    <button class="btn" type="submit">Enviar Mensagem</button>
 
-    <!-- configurações ocultas -->
     <input type="hidden" name="_next" value="https://feiticocarioca.com.br">
     <input type="hidden" name="_captcha" value="false">
   </form>
 </section>
 
-  <!-- ======= PARALLAX FINAL ======= -->
   <section class="module parallax parallax-4">
     <h1>Venha Fazer parte dessa Família!</h1>
   </section>
 
-  <!-- ======= FOOTER ======= -->
   <footer>
     <p>© 2025 G.R.E.S. Feitiço Carioca — Todos os direitos reservados.</p>
   </footer>
