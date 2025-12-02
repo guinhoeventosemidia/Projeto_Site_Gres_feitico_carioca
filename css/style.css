@@ -457,7 +457,7 @@ section.module.parallax h1 {
 ============================================================ */
 .container {
   width: 100%;
-  max-width: 1000px; /* CORRIGIDO: Permite 3 cards lado a lado */
+  max-width: 1000px; /* Garante que 3 cards caibam lado a lado */
   margin: 0 auto;
   padding: 0 20px;
 }
