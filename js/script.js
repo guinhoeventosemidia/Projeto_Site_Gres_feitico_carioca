@@ -1,60 +1,36 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   // ===============================================
-  // 1. CARROSSEL
+  // 1. MENU MOBILE (SOLUÇÃO CRÍTICA)
   // ===============================================
-  const carousel = document.querySelector('.carousel');
-  const track = document.querySelector('.carousel-track');
-  const prevButton = document.querySelector('.carousel-btn.prev');
-  const nextButton = document.querySelector('.carousel-btn.next');
+  const menuToggle = document.getElementById('menu-toggle');
+  const menu = document.getElementById('menu');
 
-  if (carousel && track && prevButton && nextButton) {
-    const slides = Array.from(track.children);
-    
-    // A função getBoundingClientRect().width é mais precisa para carrossel.
-    let slideWidth = slides.length > 0 ? slides[0].getBoundingClientRect().width : 0;
-    let currentSlide = 0;
+  if (menuToggle && menu) {
+    menuToggle.addEventListener('click', () => {
+      // Alterna as classes para mostrar/esconder o menu
+      menu.classList.toggle('show');
+      menuToggle.classList.toggle('active');
 
-    const setSlidePosition = (slide, index) => {
-      slide.style.left = slideWidth * index + 'px';
-    };
-    if (slideWidth > 0) {
-      slides.forEach(setSlidePosition);
-    }
-
-    const moveToSlide = (track, targetSlide) => {
-      const targetPosition = targetSlide.style.left;
-      track.style.transform = 'translateX(-' + targetPosition + ')';
-      currentSlide = slides.indexOf(targetSlide);
-    };
-
-    const updateSlideWidth = () => {
-      slideWidth = slides.length > 0 ? slides[0].getBoundingClientRect().width : 0;
-      slides.forEach((slide, index) => {
-        slide.style.left = slideWidth * index + 'px';
-      });
-      // Reposiciona para o slide atual após o redimensionamento
-      if (slides.length > 0) {
-          const targetSlide = slides[currentSlide];
-          track.style.transform = 'translateX(-' + targetSlide.style.left + ')';
-      }
-    };
-    window.addEventListener('resize', updateSlideWidth);
-
-
-    // Botão Anterior
-    prevButton.addEventListener('click', () => {
-      const prevSlide = slides[currentSlide - 1] || slides[slides.length - 1];
-      moveToSlide(track, prevSlide);
+      // Alterna o atributo ARIA
+      const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true' || false;
+      menuToggle.setAttribute('aria-expanded', !isExpanded);
     });
 
-    // Botão Próximo
-    nextButton.addEventListener('click', () => {
-      const nextSlide = slides[currentSlide + 1] || slides[0];
-      moveToSlide(track, nextSlide);
+    // Fecha o menu quando um item é clicado (para links âncora)
+    menu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            if (menu.classList.contains('show')) {
+                // Pequeno delay para permitir que o link âncora funcione antes de fechar o menu
+                setTimeout(() => {
+                    menu.classList.remove('show');
+                    menuToggle.classList.remove('active');
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                }, 100); 
+            }
+        });
     });
   }
-
 
   // ===============================================
   // 2. FADE-IN NA ROLAGEM (SCROLL)
@@ -71,46 +47,40 @@ document.addEventListener('DOMContentLoaded', () => {
       if (sectionTop < windowHeight - 100) {
         section.classList.add('visible');
       } 
-      // Não removemos a classe para evitar a repetição da animação ao rolar para cima.
     });
   };
 
-  // Executa ao carregar e ao rolar
   window.addEventListener('scroll', checkVisibility);
-  // Garante que as seções visíveis no carregamento já apareçam
   checkVisibility();
 
 
   // ===============================================
-  // 3. MENU MOBILE (HAMBÚRGUER)
+  // 3. CARROSSEL
   // ===============================================
-  const menuToggle = document.getElementById('menu-toggle');
-  const menu = document.getElementById('menu');
+  const track = document.querySelector('.carousel-track');
+  const prevBtn = document.querySelector('.carousel-btn.prev');
+  const nextBtn = document.querySelector('.carousel-btn.next');
 
-  if (menuToggle && menu) {
-    menuToggle.addEventListener('click', () => {
-      // Alterna as classes para mostrar/esconder o menu
-      menu.classList.toggle('show');
-      menuToggle.classList.toggle('active');
+  // Verifica se os elementos do carrossel existem antes de tentar manipulá-los
+  if (track && prevBtn && nextBtn) {
+    const slides = Array.from(track.children);
+    let index = 0;
 
-      // Alterna o atributo ARIA
-      const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true' || false;
-      menuToggle.setAttribute('aria-expanded', !isExpanded);
+    function updateCarousel() {
+      // Usamos porcentagem, que é mais robusto em diferentes tamanhos de tela.
+      track.style.transform = `translateX(-${index * 100}%)`;
+    }
+
+    // Botão Anterior
+    prevBtn.addEventListener('click', () => {
+      index = index > 0 ? index - 1 : slides.length - 1;
+      updateCarousel();
     });
 
-    // Fecha o menu quando um item é clicado (útil para links âncora)
-    menu.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-            if (menu.classList.contains('show')) {
-                // Pequeno delay para permitir que o link âncora funcione antes de fechar o menu
-                setTimeout(() => {
-                    menu.classList.remove('show');
-                    menuToggle.classList.remove('active');
-                    menuToggle.setAttribute('aria-expanded', 'false');
-                }, 100); 
-            }
-        });
+    // Botão Próximo
+    nextBtn.addEventListener('click', () => {
+      index = (index + 1) % slides.length;
+      updateCarousel();
     });
   }
-
 });
