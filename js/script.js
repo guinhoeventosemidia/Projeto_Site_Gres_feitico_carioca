@@ -10,31 +10,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (carousel && track && prevButton && nextButton) {
     const slides = Array.from(track.children);
-    const slideWidth = slides[0].getBoundingClientRect().width;
+    
+    // A função getBoundingClientRect().width é mais precisa para carrossel.
+    let slideWidth = slides.length > 0 ? slides[0].getBoundingClientRect().width : 0;
     let currentSlide = 0;
 
-    // Configura a posição inicial do carrossel
     const setSlidePosition = (slide, index) => {
       slide.style.left = slideWidth * index + 'px';
     };
-    slides.forEach(setSlidePosition);
+    if (slideWidth > 0) {
+      slides.forEach(setSlidePosition);
+    }
 
-    const moveToSlide = (track, currentSlide, targetSlide) => {
+    const moveToSlide = (track, targetSlide) => {
       const targetPosition = targetSlide.style.left;
       track.style.transform = 'translateX(-' + targetPosition + ')';
       currentSlide = slides.indexOf(targetSlide);
-      return currentSlide;
     };
 
-    // Atualiza a largura do slide em caso de redimensionamento
     const updateSlideWidth = () => {
-      const newSlideWidth = slides[0].getBoundingClientRect().width;
+      slideWidth = slides.length > 0 ? slides[0].getBoundingClientRect().width : 0;
       slides.forEach((slide, index) => {
-        slide.style.left = newSlideWidth * index + 'px';
+        slide.style.left = slideWidth * index + 'px';
       });
       // Reposiciona para o slide atual após o redimensionamento
-      const targetSlide = slides[currentSlide];
-      track.style.transform = 'translateX(-' + targetSlide.style.left + ')';
+      if (slides.length > 0) {
+          const targetSlide = slides[currentSlide];
+          track.style.transform = 'translateX(-' + targetSlide.style.left + ')';
+      }
     };
     window.addEventListener('resize', updateSlideWidth);
 
@@ -42,13 +45,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // Botão Anterior
     prevButton.addEventListener('click', () => {
       const prevSlide = slides[currentSlide - 1] || slides[slides.length - 1];
-      currentSlide = moveToSlide(track, currentSlide, prevSlide);
+      moveToSlide(track, prevSlide);
     });
 
     // Botão Próximo
     nextButton.addEventListener('click', () => {
       const nextSlide = slides[currentSlide + 1] || slides[0];
-      currentSlide = moveToSlide(track, currentSlide, nextSlide);
+      moveToSlide(track, nextSlide);
     });
   }
 
@@ -67,10 +70,8 @@ document.addEventListener('DOMContentLoaded', () => {
       // Se o topo da seção estiver dentro da metade inferior da viewport
       if (sectionTop < windowHeight - 100) {
         section.classList.add('visible');
-      } else {
-        // Opcional: remover a classe ao sair da viewport para permitir reanimação
-        // section.classList.remove('visible'); 
-      }
+      } 
+      // Não removemos a classe para evitar a repetição da animação ao rolar para cima.
     });
   };
 
@@ -101,9 +102,12 @@ document.addEventListener('DOMContentLoaded', () => {
     menu.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
             if (menu.classList.contains('show')) {
-                menu.classList.remove('show');
-                menuToggle.classList.remove('active');
-                menuToggle.setAttribute('aria-expanded', 'false');
+                // Pequeno delay para permitir que o link âncora funcione antes de fechar o menu
+                setTimeout(() => {
+                    menu.classList.remove('show');
+                    menuToggle.classList.remove('active');
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                }, 100); 
             }
         });
     });
