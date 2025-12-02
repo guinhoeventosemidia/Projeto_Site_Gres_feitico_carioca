@@ -7,10 +7,12 @@
   --verde: #00a86b;
   --branco: #ffffff;
   --cinza-escuro: #111111;
+  /* Nova variável para cor de fundo principal mais escura */
+  --fundo-base: #021f89; 
 }
 
 /* ============================================================
-   RESET GLOBAL
+   RESET GLOBAL — (CORRIGIDO!)
 ============================================================ */
 * {
   margin: 0;
@@ -21,7 +23,8 @@
 body {
   font-family: 'Poppins', sans-serif;
   color: var(--branco);
-  background: linear-gradient(135deg, #021f89, hsl(223, 94%, 54%), #7ed6df);
+  /* Ajuste no gradiente para um fundo um pouco mais suave e profissional */
+  background: linear-gradient(135deg, var(--fundo-base), hsl(223, 94%, 54%), #7ed6df);
   scroll-behavior: smooth;
   overflow-x: hidden;
   word-wrap: break-word;
@@ -33,11 +36,19 @@ body {
 ============================================================ */
 p {
   margin: 16px 0;
+  /* Suavização de cor para melhor legibilidade no gradiente */
+  color: #ededed;
 }
 
 h1, h2, h3, h4, h5 {
   margin: 24px 0 12px;
   line-height: 1.3;
+  color: var(--branco); /* Garante que todos os títulos usem a cor branca principal */
+}
+/* Cores específicas para H2 */
+h2 {
+  color: var(--dourado);
+  margin-bottom: 1rem;
 }
 
 /* ============================================================
@@ -48,20 +59,24 @@ header.navbar {
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  background: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(12px);
+  /* Aumentando a opacidade para melhor contraste */
+  background: rgba(0, 0, 0, 0.6); 
+  backdrop-filter: blur(10px);
   position: fixed;
   width: 100%;
   top: 0;
   z-index: 100;
+  /* Transição suave para fixar */
+  transition: background 0.3s ease; 
 }
 
 .logo {
   font-weight: 600;
-  font-size: 1.2rem;
+  font-size: 1.3rem; /* Leve aumento no tamanho */
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  letter-spacing: 0.5px;
 }
 
 .logo-img {
@@ -71,22 +86,33 @@ header.navbar {
   object-fit: cover;
 }
 
+.navbar nav {
+  /* Adiciona flex-grow para melhor distribuição em desktop */
+  flex-grow: 1; 
+  text-align: right; /* Alinha o menu à direita */
+}
+
 .navbar ul {
   list-style: none;
   display: flex;
-  gap: 1.5rem;
+  gap: 2rem; /* Aumento do espaço entre itens */
   transition: transform 0.4s ease, opacity 0.4s ease;
+  justify-content: flex-end; /* Alinha itens à direita em desktop */
 }
 
 .navbar a {
   color: var(--branco);
   text-decoration: none;
   font-weight: 500;
-  transition: color 0.3s;
+  transition: color 0.3s, border-bottom 0.3s;
+  padding-bottom: 5px;
 }
 
-.navbar a:hover {
+.navbar a:hover,
+.navbar a.active {
   color: var(--dourado);
+  /* Adiciona um sublinhado elegante no hover */
+  border-bottom: 2px solid var(--dourado); 
 }
 
 /* ============================================================
@@ -111,7 +137,7 @@ header.navbar {
 .overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.45);
+  background: rgba(0, 0, 0, 0.55); /* Aumentando a opacidade do overlay */
   z-index: 1;
 }
 
@@ -122,39 +148,53 @@ header.navbar {
 }
 
 .hero h1 {
-  font-size: 3.5rem;
+  font-size: 4rem; /* Leve aumento */
   color: var(--branco);
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); /* Adiciona sombra ao texto */
+}
+
+.hero h2 {
+    font-size: 1.5rem;
+    color: var(--dourado);
+    margin-top: 1rem;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
 }
 
 .hero p {
   color: #e0e0e0;
-  margin: 1rem 0;
+  margin: 1rem 0 2rem; /* Mais espaço abaixo do parágrafo */
+  font-size: 1.1rem;
 }
 
 .btn {
   background: var(--dourado);
   color: var(--cinza-escuro);
-  padding: 0.75rem 1.5rem;
-  border-radius: 2rem;
-  font-weight: 600;
+  padding: 0.85rem 1.8rem; /* Aumenta o padding do botão */
+  border-radius: 3rem; /* Deixa o botão mais arredondado */
+  font-weight: 700; /* Mais destaque */
   text-decoration: none;
-  transition: background 0.3s, transform 0.3s;
+  transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  display: inline-block; /* Garante que o transform funcione bem */
 }
 
 .btn:hover {
   background: #ffda4d;
-  transform: scale(1.05);
+  transform: scale(1.08); /* Aumenta um pouco mais no hover */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
 }
 
 .btn:focus {
-  outline: 2px solid var(--dourado);
+  outline: 3px solid var(--dourado);
+  outline-offset: 2px;
 }
 
 .scroll-indicator {
   margin-top: 2rem;
-  font-size: 1.5rem;
+  font-size: 1.8rem; /* Aumenta o tamanho */
   animation: bounce 1.5s infinite;
   color: var(--dourado);
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 /* ============================================================
@@ -165,11 +205,6 @@ header.navbar {
   text-align: center;
 }
 
-h2 {
-  color: var(--dourado);
-  margin-bottom: 1rem;
-}
-
 /* ============================================================
    CARDS
 ============================================================ */
@@ -177,28 +212,36 @@ h2 {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 2rem;
-  margin-top: 2rem;
+  gap: 2.5rem; /* Aumenta a lacuna */
+  margin-top: 3rem;
 }
 
 .card {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(6px);
-  border-radius: 1rem;
-  padding: 2rem;
-  width: 280px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-  transition: transform 0.3s, box-shadow 0.3s;
+  background: rgba(255, 255, 255, 0.12); /* Leve aumento na transparência */
+  backdrop-filter: blur(8px); /* Aumenta o blur */
+  border-radius: 1.25rem; /* Mais arredondado */
+  padding: 2.5rem;
+  width: 300px; /* Leve aumento na largura do card */
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5); /* Sombra mais profunda */
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
   text-align: left;
 }
 
 .card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.6);
+  transform: translateY(-12px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.8);
 }
 
 .card.dark {
-  background: rgba(0, 0, 0, 0.9);
+  background: rgba(0, 0, 0, 0.85); /* Levemente mais claro que 0.9 */
+}
+.card h3 {
+    color: var(--dourado); /* Título do card em dourado */
+    font-size: 1.4rem;
+    margin-top: 0;
+}
+.card p {
+    color: #dedede;
 }
 
 /* ============================================================
@@ -207,20 +250,21 @@ h2 {
 .carousel {
   position: relative;
   overflow: hidden;
-  max-width: 900px;
+  max-width: 1000px; /* Aumenta a largura máxima */
   margin: 3rem auto;
-  border-radius: 1rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 .carousel-track {
   display: flex;
-  transition: transform 0.5s ease-in-out;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Curva de transição mais dinâmica */
 }
 
 .carousel img {
   width: 100%;
   height: 500px;
-  object-fit: contain; 
+  object-fit: cover; /* Melhor ajuste para imagens */
   flex-shrink: 0;
 }
 
@@ -228,25 +272,29 @@ h2 {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.6);
   border: none;
   color: var(--dourado);
-  font-size: 2rem;
-  padding: 0.5rem 1rem;
+  font-size: 2.2rem;
+  padding: 0.75rem 1.2rem;
   cursor: pointer;
   z-index: 10;
+  border-radius: 50%;
+  line-height: 1;
+  transition: background 0.3s, color 0.3s;
 }
 
 .carousel-btn.prev {
-  left: 10px;
+  left: 20px;
 }
 
 .carousel-btn.next {
-  right: 10px;
+  right: 20px;
 }
 
 .carousel-btn:hover {
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.8);
+  color: #ffda4d;
 }
 
 /* ============================================================
@@ -256,23 +304,45 @@ h2 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
-  margin-top: 2rem;
-  max-width: 500px;
+  gap: 1.2rem;
+  margin-top: 2.5rem;
+  max-width: 600px; /* Aumenta a largura máxima */
   margin-inline: auto;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 1rem;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .form-contato input,
 .form-contato textarea {
   width: 100%;
-  padding: 0.75rem;
-  border: none;
+  padding: 1rem; /* Aumenta o padding do input */
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 0.5rem;
   font-size: 1rem;
+  background: rgba(0, 0, 0, 0.3);
+  color: var(--branco);
+  transition: border-color 0.3s, background 0.3s;
+}
+.form-contato input::placeholder,
+.form-contato textarea::placeholder {
+    color: #ccc;
+    opacity: 0.8;
+}
+
+.form-contato input:focus,
+.form-contato textarea:focus {
+    outline: none;
+    border-color: var(--dourado);
+    background: rgba(0, 0, 0, 0.5);
 }
 
 .form-contato button {
   cursor: pointer;
+  width: 100%; /* Botão com largura total no formulário */
+  margin-top: 1rem;
 }
 
 /* ============================================================
@@ -282,7 +352,9 @@ footer {
   background: #000;
   color: var(--dourado);
   text-align: center;
-  padding: 1.5rem;
+  padding: 2rem; /* Aumenta o padding */
+  font-size: 0.9rem;
+  border-top: 3px solid var(--dourado);
 }
 
 /* ============================================================
@@ -292,7 +364,8 @@ section.module.parallax {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 100vh !important;
+  /* Removendo !important e ajustando o padding para garantir altura */
+  height: 100vh; 
   width: 100%;
   position: relative;
   overflow: hidden;
@@ -310,20 +383,23 @@ section.module.parallax:after {
   z-index: 8;
   top: 0;
   left: 0;
+  /* Gradiente mais suave no fundo */
   background: linear-gradient(
     to bottom,
-    rgba(0,0,0,0) 0,
-    rgba(0,0,0,0) 40%,
-    #000 100%
+    rgba(0,0,0,0.1) 0,
+    rgba(0,0,0,0.1) 40%,
+    rgba(0,0,0,0.8) 100%
   );
 }
 
 section.module.parallax h1 {
   color: #FFF;
   text-align: center;
-  font-size: 78px;
+  font-size: 72px; /* Leve redução */
   z-index: 9;
   text-transform: uppercase;
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
+  padding: 0 1rem;
 }
 
 /* IMAGENS DO PARALLAX */
@@ -341,19 +417,19 @@ section.module.parallax h1 {
 ============================================================ */
 @keyframes bounce {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(10px); }
+  50% { transform: translateY(15px); } /* Aumenta o bounce */
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(30px); }
+  from { opacity: 0; transform: translateY(40px); } /* Aumenta a distância de fade-in */
   to { opacity: 1; transform: translateY(0); }
 }
 
 /* Fade-in ao rolar */
 .fade-section {
   opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  transform: translateY(40px); /* Aumenta a distância de fade-in */
+  transition: opacity 1s ease-out, transform 1s ease-out; /* Transição mais lenta */
 }
 
 .fade-section.visible {
@@ -362,74 +438,18 @@ section.module.parallax h1 {
 }
 
 /* ============================================================
-   RESPONSIVIDADE (MOBILE)
-============================================================ */
-@media (max-width: 768px) {
-
-  .cards {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .hero h1 {
-    font-size: 2.2rem;
-  }
-
-  .carousel img {
-    height: 300px;
-  }
-
-  section.module.parallax h1 {
-    font-size: 36px;
-  }
-
-  header.navbar {
-    flex-wrap: wrap;
-    padding: 1rem;
-  }
-
-  /* REGRAS ESSENCIAIS PARA O MENU MOBILE: */
-  .menu-toggle {
-    display: flex; /* Garante que o ícone hambúrguer apareça */
-  }
-
-  nav {
-    width: 100%;
-  }
-
-  /* ESCONDE o menu por padrão (fora da tela) */
-  .navbar ul {
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-    background: rgba(0, 0, 0, 0.9);
-    width: 100%;
-    position: absolute;
-    top: 70px;
-    left: 0;
-    padding: 1.5rem 0;
-    transform: translateY(-150%);
-    opacity: 0;
-  }
-
-  /* MOSTRA o menu quando o JS adiciona a classe 'show' */
-  .navbar ul.show {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-/* ============================================================
-   MENU MOBILE HAMBÚRGUER (ÍCONE)
+   MENU MOBILE HAMBÚRGUER (OCULTO POR PADRÃO - DESKTOP)
 ============================================================ */
 .menu-toggle {
-  display: none; /* Escondido por padrão no desktop */
+  /* Por padrão (desktop), fica oculto */
+  display: none; 
   flex-direction: column;
   justify-content: space-between;
-  width: 28px;
-  height: 20px;
+  width: 30px; 
+  height: 22px;
   cursor: pointer;
   z-index: 110;
+  transition: transform 0.3s;
 }
 
 .menu-toggle span {
@@ -438,18 +458,19 @@ section.module.parallax h1 {
   width: 100%;
   background: var(--branco);
   border-radius: 2px;
-  transition: 0.3s;
+  transition: 0.4s; /* Transição mais suave */
+  transform-origin: center;
 }
 
-/* ÍCONE ANIMADO (quando a classe 'active' é adicionada pelo JS) */
+/* ÍCONE ANIMADO */
 .menu-toggle.active span:nth-child(1) {
-  transform: rotate(45deg) translateY(8px);
+  transform: rotate(45deg) translate(5px, 6px); /* Ajuste nos valores para melhor alinhamento */
 }
 .menu-toggle.active span:nth-child(2) {
   opacity: 0;
 }
 .menu-toggle.active span:nth-child(3) {
-  transform: rotate(-45deg) translateY(-8px);
+  transform: rotate(-45deg) translate(5px, -6px); /* Ajuste nos valores para melhor alinhamento */
 }
 
 /* ============================================================
@@ -457,7 +478,7 @@ section.module.parallax h1 {
 ============================================================ */
 .container {
   width: 100%;
-  max-width: 1000px; /* Garante que 3 cards caibam lado a lado */
+  max-width: 860px; /* Aumenta o max-width do container principal */
   margin: 0 auto;
   padding: 0 20px;
 }
@@ -465,49 +486,158 @@ section.module.parallax h1 {
 /* ============================================================
    PÁGINA – ACONTECIMENTOS
 ============================================================ */
+.acontecimentos-page {
+    padding-top: 5rem; /* Adiciona padding no topo para o navbar fixo */
+}
 
 .post-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2.5rem;
-  margin-top: 3rem;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Minmax levemente maior */
+  gap: 3rem;
+  margin-top: 3.5rem;
 }
 
 .post-card {
-  background: rgba(255,255,255,0.08);
-  backdrop-filter: blur(6px);
+  background: rgba(255,255,255,0.1); /* Leve aumento na transparência */
+  backdrop-filter: blur(8px);
   border-radius: 1rem;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  box-shadow: 0 6px 25px rgba(0,0,0,0.5); /* Sombra mais destacada */
   overflow: hidden;
-  transition: transform .3s, box-shadow .3s;
+  transition: transform .4s ease, box-shadow .4s ease;
 }
 
 .post-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 6px 25px rgba(0,0,0,0.6);
+  transform: translateY(-10px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.8);
 }
 
 .post-card img {
   width: 100%;
-  height: 240px;
+  height: 260px; /* Leve aumento */
   object-fit: cover;
 }
 
 .post-content {
-  padding: 1.5rem;
+  padding: 1.75rem;
+  text-align: left;
 }
 
 .post-date {
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   color: var(--dourado);
-  font-weight: 600;
+  font-weight: 700;
+  letter-spacing: 0.5px;
 }
 
 .post-card h3 {
-  margin: 10px 0;
+  margin: 10px 0 5px;
   color: var(--branco);
+  font-size: 1.5rem;
 }
 
 .post-card p {
   color: #dedede;
+  font-size: 0.95rem;
+}
+
+/* ============================================================
+   RESPONSIVIDADE (CORRIGIDO!)
+============================================================ */
+@media (max-width: 768px) {
+
+  /* Ajustes gerais de padding */
+  .section {
+      padding: 4rem 1rem;
+  }
+  .container {
+      padding: 0 15px;
+  }
+
+  /* Cards */
+  .cards {
+    flex-direction: column;
+    align-items: center;
+  }
+  .card {
+      width: 90%; /* Ocupa mais espaço na tela */
+      max-width: 350px;
+  }
+
+  /* Hero */
+  .hero h1 {
+    font-size: 2.8rem; 
+  }
+  .hero h2 {
+    font-size: 1.2rem;
+  }
+  .hero p {
+      font-size: 1rem;
+  }
+
+  /* Carrossel */
+  .carousel img {
+    height: 250px; /* Redução para 250px para não ser muito alto */
+    object-fit: contain;
+  }
+  .carousel-btn {
+      padding: 0.5rem 0.8rem;
+      font-size: 1.5rem;
+  }
+  .carousel-btn.prev { left: 10px; }
+  .carousel-btn.next { right: 10px; }
+
+  /* Parallax */
+  section.module.parallax h1 {
+    font-size: 38px;
+  }
+
+  /* NAVBAR (CORREÇÃO DO MENU MOBILE) */
+  header.navbar {
+    flex-wrap: nowrap; 
+    padding: 1rem 1.5rem;
+  }
+  
+  .navbar nav {
+    flex-grow: unset;
+  }
+
+  .navbar ul {
+    /* Estado inicial: oculto e movido para cima */
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    background: rgba(0, 0, 0, 0.95);
+    width: 100%;
+    position: absolute;
+    top: 70px; /* Alinha abaixo do navbar */
+    left: 0;
+    padding: 2rem 0;
+    transform: translateY(-150%);
+    opacity: 0;
+    /* Transição mais rápida para mobile */
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  }
+
+  .navbar ul.show {
+    transform: translateY(0);
+    opacity: 1;
+    display: flex; /* Garante que o display seja flex quando ativo */
+  }
+  
+  /* Botão de toggle AGORA APARECE SÓ em mobile */
+  .menu-toggle {
+    display: flex; /* CORREÇÃO ESSENCIAL */
+    margin-left: auto; /* Empurra para a direita */
+  }
+
+  /* Posts */
+  .post-grid {
+      /* Garante que o grid use apenas 1 coluna em telas menores */
+      grid-template-columns: 1fr; 
+      gap: 2rem;
+  }
+  .post-card {
+      max-width: 90%;
+      margin: 0 auto;
+  }
 }
