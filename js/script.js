@@ -1,17 +1,19 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   // ===============================================
-  // 1. MENU MOBILE (VERSÃO PADRONIZADA)
+  // 1. MENU MOBILE (SOLUÇÃO CRÍTICA)
   // ===============================================
-  // Usamos 'toggle' para ser fiel ao nome usado originalmente
+  // Garante que o menu e o toggle existem
   const toggle = document.getElementById('menu-toggle');
   const menu = document.getElementById('menu');
 
   if (toggle && menu) {
     toggle.addEventListener('click', () => {
+      // Alterna as classes para mostrar/esconder o menu
       menu.classList.toggle('show');
       toggle.classList.toggle('active');
 
+      // Alterna o atributo ARIA
       const isExpanded = toggle.getAttribute('aria-expanded') === 'true' || false;
       toggle.setAttribute('aria-expanded', !isExpanded);
     });
@@ -20,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
     menu.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
             if (menu.classList.contains('show')) {
+                // Pequeno delay para permitir que o link âncora funcione antes de fechar o menu
                 setTimeout(() => {
                     menu.classList.remove('show');
                     toggle.classList.remove('active');
@@ -41,6 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const sectionTop = section.getBoundingClientRect().top;
       const windowHeight = window.innerHeight;
 
+      // Se o topo da seção estiver dentro da metade inferior da viewport
       if (sectionTop < windowHeight - 100) {
         section.classList.add('visible');
       } 
@@ -58,19 +62,23 @@ document.addEventListener('DOMContentLoaded', () => {
   const prevBtn = document.querySelector('.carousel-btn.prev');
   const nextBtn = document.querySelector('.carousel-btn.next');
 
+  // Verifica se os elementos do carrossel existem antes de tentar manipulá-los
   if (track && prevBtn && nextBtn) {
     const slides = Array.from(track.children);
     let index = 0;
 
     function updateCarousel() {
+      // Usamos porcentagem, que é mais robusto em diferentes tamanhos de tela.
       track.style.transform = `translateX(-${index * 100}%)`;
     }
 
+    // Botão Anterior
     prevBtn.addEventListener('click', () => {
       index = index > 0 ? index - 1 : slides.length - 1;
       updateCarousel();
     });
 
+    // Botão Próximo
     nextBtn.addEventListener('click', () => {
       index = (index + 1) % slides.length;
       updateCarousel();
